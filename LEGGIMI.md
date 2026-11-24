@@ -1,0 +1,4 @@
+Urban Freeride Studio V3 — demo locale. Ranking per comune, provincia, regione, Italia e amici; filtro mensile. Rider simulati. Solo gli spot pilota hanno territorio assegnato; quelli inseriti dagli utenti non entrano nelle classifiche territoriali finché non vengono geocodificati. GPS richiede HTTPS. Nessun backend attivo.
+
+## V4 – moderazione locale
+Aprire admin.html sullo stesso browser e origine dell'app. Foto e commenti nuovi entrano in coda; approvazione li rende visibili al successivo caricamento dell'app. Video non approvabili perché non archiviati. Nessuna AI, autenticazione o sicurezza server attiva. Non pubblicare come community reale. Per produzione: Supabase Auth con MFA e ruoli server/RLS, bucket privati di quarantena, moderazione testo/immagini e analisi video/audio lato server, audit immutabile, gestione segnalazioni e consensi, limiti di upload e cancellazione. Mai inserire chiavi segrete in GitHub Pages.
