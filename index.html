@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,"/>
   <meta name="theme-color" content="#080810"/>
   <meta name="apple-mobile-web-app-capable" content="yes"/>
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="app.css"/>
   <title>Urban Freeride — Ride · Discover · Conquista</title>
 </head>
-<body>
+<style>[hidden]{display:none!important}body{background:#080810;color:#fff}#login{max-width:440px;margin:40px auto;padding:24px}#login img{width:120px}input,select,textarea,button{font:inherit;color:#fff;background:#21172e;border:1px solid #65488a;border-radius:10px;padding:12px;margin:5px 0;max-width:100%}input,textarea,select{width:100%}button{cursor:pointer}#message{position:sticky;top:0;z-index:1000;background:#251739;color:#fff;padding:10px;overflow-wrap:anywhere}article{padding:14px;margin:12px 0;border:1px solid #382a4a;border-radius:16px}section{padding:14px}#leaflet-map{height:65vh;position:relative}a{color:#c99aff}.beta-nav{display:flex;justify-content:space-around;position:sticky;bottom:0;background:#15101e;z-index:500}.beta-nav button{padding:8px;font-size:12px}.phone{height:auto;min-height:85vh;overflow:visible}.screen.active{display:block}.screen:not(.active){display:none}</style><body>
 <svg xmlns="http://www.w3.org/2000/svg" class="svg-defs" aria-hidden="true"><defs>
   <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></symbol>
   <symbol id="i-map" viewBox="0 0 24 24"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0z"/><circle cx="12" cy="10" r="2.4"/></symbol>
@@ -58,93 +58,4 @@
   <symbol id="i-medal" viewBox="0 0 24 24"><path d="m7 2 5 8 5-8M5 2l5 9M19 2l-5 9"/><circle cx="12" cy="16" r="6"/><path d="m12 12 1.2 2.5 2.8.3-2 2 .5 2.8-2.5-1.4-2.5 1.4.5-2.8-2-2 2.8-.3z"/></symbol>
 </defs></svg>
 
-<div id="phone" class="phone">
-  <div class="statusbar"><span>9:41</span><span class="status-dots">▂▄▆ <span class="wifi">◕</span> ▰</span></div>
-  <div class="app-content">
-    <section id="screen-feed" class="screen active" aria-label="Feed">
-      <header class="topbar brand-top">
-        <div class="brand-wrap"><img src="assets/brand-emblem.png" alt="Logo Urban Freeride" class="brand-badge"/><div class="brand-words"><div>URBAN</div><div>FREERIDE</div></div></div>
-        <button class="icon-button bell-button" id="bell-btn" aria-label="Notifiche"><svg class="icon"><use href="#i-bell"/></svg><i class="notification-dot">3</i></button>
-      </header>
-      <div class="pill-switch feed-tabs"><button data-feed="all" class="selected">Feed</button><button data-feed="spot">Spot</button><button data-feed="routes">Itinerari</button><button data-feed="challenges">Sfide</button></div>
-      <div class="demo-banner"><span class="purple-dot"></span> VITERBO · COMMUNITY DEMO <button id="feed-city">Cambia città <svg class="icon xsmall"><use href="#i-chevron"/></svg></button></div>
-      <div id="post-list"></div>
-      <div class="end-feed">🚵 La città è tutta da scoprire. <b>Segnala uno spot!</b></div>
-    </section>
-
-    <section id="screen-map" class="screen" aria-label="Mappa">
-      <header class="topbar center-title"><span class="header-left">Viterbo <span class="online-dot"></span></span><h1>Mappa</h1><button class="icon-button" id="map-settings" aria-label="Filtri"><svg class="icon"><use href="#i-sliders"/></svg></button></header>
-      <div class="map-stage" id="map-stage">
-        <div id="leaflet-map" aria-label="Mappa degli spot nel centro di Viterbo"></div>
-        <div class="map-overlay-label">VITERBO <span>CENTRO STORICO</span></div>
-        <div class="map-buttons"><button id="map-navigate" class="map-control" title="Mostra la mia posizione"><svg class="icon"><use href="#i-location"/></svg></button><button id="map-layers" class="map-control" title="Cambia mappa"><svg class="icon"><use href="#i-layers"/></svg></button><button id="map-centring" class="map-control" title="Centra Viterbo"><svg class="icon"><use href="#i-crosshair"/></svg></button><button id="map-follow" class="map-control follow-button" title="Seguimi GPS"><svg class="icon"><use href="#i-location"/></svg><span>Seguimi<br/>GPS</span></button></div>
-        <div class="map-state"><span class="online-dot"></span><span id="map-state-text">Tocca Seguimi per il GPS</span></div>
-        <div class="map-selected" id="map-selected"></div>
-      </div>
-    </section>
-
-    <section id="screen-spot" class="screen" aria-label="Dettaglio spot">
-      <header class="topbar center-title"><button class="icon-button" id="spot-back" aria-label="Indietro"><svg class="icon"><use href="#i-back"/></svg></button><h1 id="spot-title-head">Spot</h1><button class="icon-button" id="spot-share" aria-label="Condividi"><svg class="icon"><use href="#i-share"/></svg></button></header>
-      <div id="spot-detail"></div>
-    </section>
-
-    <section id="screen-publish" class="screen" aria-label="Pubblica spot">
-      <header class="topbar center-title"><button class="icon-button" id="publish-back" aria-label="Indietro"><svg class="icon"><use href="#i-back"/></svg></button><h1>Pubblica Spot</h1><span class="header-end">DEMO</span></header>
-      <form id="publish-form" class="publish-form">
-        <div class="pill-switch publish-tabs"><button type="button" data-media="photo" class="selected">Foto</button><button type="button" data-media="video">Video</button><button type="button" data-media="link">Link</button></div>
-        <div id="media-upload" class="media-upload">
-          <div id="media-preview-area" class="media-preview-area"><svg class="icon upload-icon"><use href="#i-camera"/></svg><b>Aggiungi il tuo contenuto</b><p>Le fotografie vengono ottimizzate automaticamente prima del salvataggio</p></div>
-          <label class="choose-file" for="media-file"><svg class="icon"><use href="#i-upload"/></svg><span id="choose-file-text">Scegli fotografie</span></label>
-          <input id="media-file" type="file" accept="image/*" multiple hidden/>
-          <div id="image-result" class="compression-note" hidden></div>
-        </div>
-        <div id="link-upload" class="link-upload hidden"><div class="text-field"><label for="external-video">Link video (YouTube o Vimeo)</label><input type="url" id="external-video" placeholder="https://youtu.be/..." inputmode="url"/></div><div class="subtle-note">Il video rimane sulla piattaforma esterna; qui mostriamo l'anteprima.</div></div>
-        <div class="text-field"><label for="field-name">Nome dello spot</label><input id="field-name" maxlength="64" required placeholder="Es. Scalinata San Pellegrino"/></div>
-        <div class="text-field"><label for="field-desc">Descrizione</label><textarea id="field-desc" rows="3" maxlength="350" placeholder="Racconta cosa rende speciale questo posto..."></textarea></div>
-        <div class="text-field"><label for="field-area">Zona</label><input id="field-area" maxlength="50" required placeholder="Es. Centro storico di Viterbo"/></div>
-        <div class="text-field"><label for="field-category">Categoria</label><select id="field-category"><option value="Scalinata">Scalinata</option><option value="Drop">Drop</option><option value="Percorso">Percorso</option><option value="Panorama">Panorama</option></select></div>
-        <div class="text-field"><label for="field-difficulty">Difficoltà indicativa</label><div class="pill-switch level-tabs"><button type="button" data-level="Facile">Facile</button><button type="button" data-level="Media" class="selected">Media</button><button type="button" data-level="Difficile">Difficile</button></div></div>
-        <div class="location-select"><div><svg class="icon"><use href="#i-map"/></svg><div><b>Posizione dello spot</b><small id="publish-coordinates">Centro di Viterbo · da perfezionare</small></div></div><button type="button" id="publish-location">Usa GPS</button></div>
-        <div class="notice"><svg class="icon"><use href="#i-shield"/></svg><p>La pubblicazione è solo locale nella demo. Non condividere volti, dati personali o posizioni private. I nuovi spot richiedono una verifica prima di apparire pubblicamente.</p></div>
-        <button type="submit" class="button button-primary publish-submit"><svg class="icon"><use href="#i-plus"/></svg> Invia alla moderazione demo</button>
-      </form>
-    </section>
-
-    <section id="screen-activity" class="screen" aria-label="Classifiche e attività">
-      <header class="topbar center-title"><button class="icon-button" id="activity-back" aria-label="Torna al feed"><svg class="icon"><use href="#i-back"/></svg></button><h1>Ranking Rider</h1><button class="icon-button" id="activity-filter" aria-label="Informazioni classifica"><svg class="icon"><use href="#i-sliders"/></svg></button></header>
-      <div class="rank-controls"><div class="rank-scopes" aria-label="Livello territoriale"><button data-rank="city">Comune</button><button class="selected" data-rank="province">Provincia</button><button data-rank="region">Regione</button><button data-rank="national">Italia</button><button data-rank="friends">Amici</button></div><div class="rank-location"><div><small>CLASSIFICA TERRITORIALE</small><h2 id="rank-place">Provincia di Viterbo</h2></div><select id="rank-territory" aria-label="Territorio"></select></div><div class="pill-switch rank-period"><button class="selected" data-period="all">Sempre</button><button data-period="month">Questo mese</button></div></div>
-      <div class="ranking-hero" id="rank-podium"></div>
-      <div id="ranking-rows" class="ranking-rows"></div>
-      <div class="minor-alert"><svg class="icon"><use href="#i-shield"/></svg> Classifica dimostrativa. Le bandiere si ottengono raggiungendo luoghi consentiti, non compiendo acrobazie.</div>
-      <div class="activity-section"><h2><svg class="icon"><use href="#i-route"/></svg> Le mie uscite</h2><div class="activity-counters"><div><small>Tempo</small><b id="tracking-time">00:00:00</b></div><div><small>Distanza</small><b id="tracking-distance">0,00 <em>km</em></b></div><div><small>GPS</small><b id="tracking-accuracy">-- <em>m</em></b></div></div><div class="activity-actions"><button id="tracking-toggle" class="button button-primary"><svg class="icon"><use href="#i-play"/></svg> Avvia registrazione</button><button id="tracking-export" class="button button-subtle" disabled><svg class="icon"><use href="#i-download"/></svg> GPX</button></div><p class="helper">La registrazione funziona con l'app aperta. La traccia resta sul tuo dispositivo.</p></div>
-    </section>
-
-    <section id="screen-profile" class="screen" aria-label="Profilo rider">
-<a href="admin.html" style="display:block;text-align:center;padding:12px;color:#d1a5ff">Area amministrativa · solo demo</a>
-      <header class="topbar center-title"><span class="header-left" id="profile-header-role">URBAN RIDER</span><h1>Profilo</h1><button class="icon-button" id="profile-settings" aria-label="Impostazioni"><svg class="icon"><use href="#i-settings"/></svg></button></header>
-      <div class="profile-intro"><img class="profile-avatar" src="assets/rider-profile.webp" alt="Avatar demo rider"/><h2><span id="profile-nickname">UrbanRider</span> <span class="profile-verified">★</span></h2><p>Rider di Viterbo · Profilo demo</p></div>
-      <div class="xp-line"><div class="xp-title"><span class="level-pill">Lv <span id="profile-level">1</span></span><small><span id="profile-xp">0</span> / <span id="profile-xpnext">500</span> XP</small></div><div class="progress"><span id="xp-fill"></span></div></div>
-      <div class="profile-stats"><div><svg class="icon gold-icon"><use href="#i-flag"/></svg><b id="profile-flags">0</b><small>Bandiere</small></div><div><svg class="icon"><use href="#i-route"/></svg><b id="profile-spots">0</b><small>Spot</small></div><div><svg class="icon"><use href="#i-user"/></svg><b>0</b><small>Follower</small></div><div><svg class="icon"><use href="#i-user"/></svg><b>0</b><small>Seguiti</small></div></div>
-      <div class="section-divider"></div>
-      <button id="profile-badges" class="list-heading">Le mie conquiste <svg class="icon"><use href="#i-chevron"/></svg></button>
-      <div class="badges-row"><div class="achievement" id="badge-explorer"><div class="hex">♜</div><b>Explorer</b><small>1 spot</small></div><div class="achievement" id="badge-master"><div class="hex orange-hex">♛</div><b>Urban Master</b><small>25 bandiere</small></div><div class="achievement" id="badge-king"><div class="hex">⚑</div><b>Stair King</b><small>5 scalinate</small></div></div>
-      <div class="section-divider"></div>
-      <button id="profile-recent-btn" class="list-heading">Attività recenti <svg class="icon"><use href="#i-chevron"/></svg></button>
-      <div id="recent-activity" class="recent-activity"></div>
-      <div class="profile-controls"><button id="edit-profile" class="button button-subtle"><svg class="icon"><use href="#i-edit"/></svg> Modifica nickname</button><div class="privacy-line"><svg class="icon"><use href="#i-shield"/></svg> Posizione personale non visibile agli altri</div></div>
-    </section>
-  </div>
-  <nav class="bottom-nav" aria-label="Navigazione principale">
-    <button data-go="feed" class="nav-tab active"><svg class="icon"><use href="#i-home"/></svg><span>Feed</span></button>
-    <button data-go="map" class="nav-tab"><svg class="icon"><use href="#i-map"/></svg><span>Mappa</span></button>
-    <button data-go="publish" class="nav-tab nav-plus" aria-label="Pubblica"><span class="plus-ring"><svg class="icon"><use href="#i-plus"/></svg></span></button>
-    <button data-go="activity" class="nav-tab"><svg class="icon"><use href="#i-pulse"/></svg><span>Attività</span></button>
-    <button data-go="profile" class="nav-tab"><svg class="icon"><use href="#i-user"/></svg><span>Profilo</span></button>
-  </nav>
-  <div id="toast" class="toast" role="status" aria-live="polite"></div>
-  <div id="sheet" class="sheet-backdrop hidden"><div class="sheet-card"><div class="sheet-handle"></div><button id="sheet-close" class="sheet-close" aria-label="Chiudi"><svg class="icon"><use href="#i-x"/></svg></button><div id="sheet-content"></div></div></div>
-</div>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-<script src="app.js"></script>
-</body>
-</html>
+<div id="message" role="status"></div><section id="login"><img src="assets/brand-emblem.png" alt="Urban Freeride"><h1>PRIVATE BETA</h1><p>Accesso riservato ai tester maggiorenni autorizzati.</p><form id="login-form"><input id="email" type="email" placeholder="Email" required><input id="password" type="password" placeholder="Password" required><button class="button button-primary">Accedi</button></form></section><div id="phone" class="phone" hidden><header class="topbar"><img src="assets/brand-emblem.png" width="52" alt="Urban Freeride"><b>URBAN FREERIDE</b><button id="refresh">↻</button><button id="logout">Esci</button></header><p style="padding:10px">PRIVATE BETA · <span id="who"></span></p><section id="screen-feed" class="screen active"><h1>Community</h1><div id="post-list"></div></section><section id="screen-map" class="screen"><h1>Mappa spot</h1><div id="leaflet-map"></div></section><section id="screen-publish" class="screen"><h1>Pubblica</h1><form id="photo-form"><h2>Foto</h2><input id="photo" type="file" accept="image/*" required><input id="caption" maxlength="350" placeholder="Descrizione"><select id="spot-choice"></select><button>Invia foto</button></form><form id="spot-form"><h2>Nuovo spot</h2><input name="n" required placeholder="Nome"><textarea name="d" placeholder="Descrizione e accesso consentito"></textarea><select name="c"><option>Scalinata</option><option>Drop</option><option>Percorso</option></select><input name="city" required placeholder="Comune"><input name="province" required value="Viterbo"><input name="lat" type="number" step="any" required placeholder="Latitudine"><input name="lng" type="number" step="any" required placeholder="Longitudine"><button type="button" id="gps">Usa GPS dello spot</button><button>Invia spot</button></form></section><section id="screen-activity" class="screen"><h1>Ranking Rider</h1><select id="scope"><option value="province">Provincia</option><option value="city">Comune</option><option value="region">Regione</option><option value="national">Italia</option></select><input id="territory" value="Viterbo"><label><input style="width:auto" type="checkbox" id="monthly"> Questo mese</label><button id="rank-go">Aggiorna</button><div id="ranking-rows"></div></section><section id="screen-profile" class="screen"><h1>Profilo</h1><p>🚩 Bandiere: <b id="flags"></b></p><p>Spot proposti: <b id="own"></b></p><a id="admin-link" href="admin.html" hidden>Admin Control Center</a></section><nav class="beta-nav"><button data-go="feed">Feed</button><button data-go="map">Mappa</button><button data-go="publish">＋</button><button data-go="activity">Ranking</button><button data-go="profile">Profilo</button></nav></div><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script><script src="beta.js"></script></body></html>
